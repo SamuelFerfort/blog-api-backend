@@ -1,10 +1,10 @@
-import User from "../models/user";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"
-import "dotenv/config"
-
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 export const registerUser = async (req, res) => {
+  
   const emailExist = await User.findOne({ email: req.body.email });
 
   if (emailExist) return res.status(400).send("Email already exists");
@@ -32,6 +32,8 @@ export const loginUser = async (req, res) => {
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Wrong Password");
 
-  const token = jwt.sign({ id: user._id}, process.env.TOKEN_SECRET)
-  res.header("auth-token", token).send(token)
+  const token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET);
+  res.header("auth-token", token).send(token);
 };
+
+export const logoutUser = async (req, res) => {};

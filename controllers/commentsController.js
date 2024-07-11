@@ -1,9 +1,10 @@
-import Comment from "../models/comment";
-import {body , validationResult} from "express-validator"
+import Comment from "../models/comment.js";
+
+
+
 export const getCommentsByPost = async (req, res) => {
   try {
-    const comments = await Comment.find({ post: req.params.postId }).populate(
-      "Author"
+    const comments = await Comment.find({ post: req.params.postId }).populate({path: "Author", select: "name"}
     );
     if (!comments) {
       return res
