@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 export const registerUser = async (req, res) => {
-  
   const emailExist = await User.findOne({ email: req.body.email });
 
   if (emailExist) return res.status(400).send("Email already exists");
@@ -27,13 +26,17 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send("Email does not exist");
+  if (!user) return res.status(400).json({ message: "Email does not exist" });
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).send("Wrong Password");
+  if (!validPass) return res.status(400).json({ message: "Wrong Password" });
 
-  const token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET);
-  res.header("auth-token", token).send(token);
+  const token = jwt.sign(
+    { id: user._id, name: user.name },
+    process.env.TOKEN_SECRET
+  );
+  res.setHeader("Authorization", `Bearer ${token}`);
+  res.json({ message: "Login successful" });
 };
 
 export const logoutUser = async (req, res) => {};
