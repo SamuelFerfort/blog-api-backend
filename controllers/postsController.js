@@ -2,7 +2,7 @@ import Post from "../models/post.js";
 
 export const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find({published: true});
 
     if (!posts) return res.status(404).json({ message: "No posts found" });
 
