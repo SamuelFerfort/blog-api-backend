@@ -13,4 +13,16 @@ export const getAllPosts = async (req, res) => {
   }
 };
 
+export const getPostById = async(req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+    if (!post) return res.status(404).json({ message: "No posts found" });
+    res.json(post)
+  } catch (err) {
+    console.error("Error getting post", err)
+    res.status(500).json({ message: "Internal server error" });
+
+  }
+}
+
 export const createPost = async (req, res) => {};
