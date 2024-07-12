@@ -36,7 +36,7 @@ export const loginUser = async (req, res) => {
     process.env.TOKEN_SECRET
   );
   res.setHeader("Authorization", `Bearer ${token}`);
-  res.json({ message: "Login successful" });
+  res.json({ message: "Login successful", token });
 };
 
 export const logoutUser = async (req, res) => {};

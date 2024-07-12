@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const registerValidation = (req, res, next) => {
-  console.log(req.body.name)
+  console.log(req.body.name);
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
     email: Joi.string().email().required(),
@@ -20,6 +20,6 @@ export const loginValidation = (req, res, next) => {
   });
 
   const { error } = schema.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ message: error.details[0].message });
   next();
 };
