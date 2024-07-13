@@ -1,102 +1,117 @@
-export const  mockPosts = [
-    {
-      title: "The Future of Artificial Intelligence",
-      content: `<h2>Introduction</h2>
-      <p>Artificial Intelligence (AI) is rapidly evolving, reshaping industries and our daily lives. This article explores the potential future developments in AI and their implications.</p>
-      <h2>Machine Learning Advancements</h2>
-      <p>Recent breakthroughs in machine learning, particularly in deep learning models, have led to significant improvements in areas such as:</p>
-      <ul>
-        <li>Natural Language Processing</li>
-        <li>Computer Vision</li>
-        <li>Robotics</li>
-      </ul>
-      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="AI concept illustration">
-      <h2>Ethical Considerations</h2>
-      <p>As AI becomes more advanced, we must address important ethical questions:</p>
-      <ol>
-        <li>Privacy concerns</li>
-        <li>Bias in AI decision-making</li>
-        <li>The impact on employment</li>
-      </ol>
-      <img src="https://images.unsplash.com/photo-1550432163-9cb326104944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="AI ethics concept">
-      <h2>Conclusion</h2>
-      <p>The future of AI is both exciting and challenging. As we continue to push the boundaries of what's possible, it's crucial that we approach these advancements with careful consideration of their broader implications.</p>`,
-      author: "user_id_here",
-      summary: "An exploration of the future developments in Artificial Intelligence and their potential impacts on society.",
-      mainImage: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
-      images: [
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1550432163-9cb326104944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-      ],
-      tags: ["AI", "Technology", "Ethics"],
-      comments: []
-    },
-    {
-      title: "Mastering the Art of Sourdough Bread",
-      content: `<h2>Introduction to Sourdough</h2>
-      <p>Sourdough bread, with its complex flavors and chewy texture, has captured the hearts of baking enthusiasts worldwide. This guide will walk you through the process of creating your own delicious sourdough loaf.</p>
-      <h2>Creating Your Starter</h2>
-      <p>The key to great sourdough is a healthy starter. Here's how to make one:</p>
-      <ol>
-        <li>Mix equal parts flour and water</li>
-        <li>Let it sit at room temperature for 24 hours</li>
-        <li>Discard half and feed with more flour and water</li>
-        <li>Repeat steps 2-3 for about a week</li>
-      </ol>
-      <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fc08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Sourdough starter">
-      <h2>The Baking Process</h2>
-      <p>Once your starter is active, you're ready to bake! Here's a basic recipe:</p>
-      <ul>
-        <li>500g bread flour</li>
-        <li>350g water</li>
-        <li>100g active starter</li>
-        <li>10g salt</li>
-      </ul>
-      <p>Mix ingredients, let rise for 4-6 hours, shape, and bake in a Dutch oven at 450°F (230°C) for 45 minutes.</p>
-      <img src="https://images.unsplash.com/photo-1585478259889-30cc4512ccdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Fresh baked sourdough bread">
-      <h2>Enjoy Your Creation</h2>
-      <p>Let the bread cool before slicing. Enjoy your homemade sourdough with butter, jam, or as part of your favorite sandwich!</p>`,
-      author: "user_id_here",
-      summary: "A comprehensive guide to making your own delicious sourdough bread at home, from creating a starter to baking the perfect loaf.",
-      mainImage: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-      images: [
-        "https://images.unsplash.com/photo-1585478259715-876a6a81fc08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80",
-        "https://images.unsplash.com/photo-1585478259889-30cc4512ccdd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
-      ],
-      tags: ["Baking", "Sourdough", "Recipe"],
-      comments: []
-    },
-    {
-      title: "Exploring the Wonders of the Great Barrier Reef",
-      content: `<h2>Introduction to the Great Barrier Reef</h2>
-      <p>The Great Barrier Reef, stretching over 2,300 kilometers off the coast of Australia, is the world's largest coral reef system and one of the seven natural wonders of the world.</p>
-      <img src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Aerial view of the Great Barrier Reef">
-      <h2>Diverse Marine Life</h2>
-      <p>The reef is home to an incredible variety of marine life, including:</p>
-      <ul>
-        <li>Over 1,500 species of fish</li>
-        <li>400 types of hard coral</li>
-        <li>4,000 varieties of mollusc</li>
-        <li>240 species of birds</li>
-      </ul>
-      <h2>Conservation Efforts</h2>
-      <p>Climate change and other human activities pose significant threats to the reef. Conservation efforts include:</p>
-      <ol>
-        <li>Reducing greenhouse gas emissions</li>
-        <li>Improving water quality</li>
-        <li>Sustainable tourism practices</li>
-      </ol>
-      <img src="https://images.unsplash.com/photo-1591564962467-3d93dff78bbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Coral restoration project">
-      <h2>Visiting the Reef</h2>
-      <p>Visitors can experience the reef through various activities such as snorkeling, diving, and glass-bottom boat tours. Remember to practice responsible tourism to help preserve this natural wonder for future generations.</p>`,
-      author: "user_id_here",
-      summary: "An exploration of the Great Barrier Reef, its diverse ecosystem, the challenges it faces, and how visitors can experience its beauty responsibly.",
-      mainImage: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80",
-      images: [
-        "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        "https://images.unsplash.com/photo-1591564962467-3d93dff78bbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-      ],
-      tags: ["Travel", "Nature", "Conservation"],
-      comments: []
-    }
-  ];
+export const mockPosts = [
+  {
+    title:
+      "Mastering the ADC Role: A Comprehensive Guide to Climbing Solo Queue in League of Legends",
+    content: `<h2>Introduction</h2>
+    <p>Becoming a formidable AD Carry (ADC) in League of Legends requires skill, strategy, and dedication. This guide will provide you with essential tips to improve your ADC gameplay and climb the solo queue ladder.</p>
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gamer setup with multiple screens">
+    <h2>1. Master Your Champion Pool</h2>
+    <p>Focus on mastering 2-3 ADC champions. This allows you to:
+    <ul>
+      <li>Understand matchups deeply</li>
+      <li>Improve mechanics through repetition</li>
+      <li>Adapt your playstyle based on team composition</li>
+    </ul>
+    Recommended champions for beginners: Ashe, Caitlyn, and Miss Fortune.</p>
+    <h2>2. Perfect Your Farming Technique</h2>
+    <p>As an ADC, your primary source of power comes from items, which require gold. Improve your CS (Creep Score) by:
+    <ul>
+      <li>Practicing last-hitting in custom games</li>
+      <li>Learning to farm under tower</li>
+      <li>Balancing farm with harass in lane</li>
+    </ul>
+    Aim for at least 7-8 CS per minute.</p>
+    <h2>3. Positioning is Key</h2>
+    <p>Your survival in teamfights directly impacts your team's success. Remember:
+    <ul>
+      <li>Stay behind your frontline</li>
+      <li>Keep track of enemy cooldowns, especially crowd control abilities</li>
+      <li>Use terrain to your advantage</li>
+    </ul>
+    Practice kiting and orb-walking to maximize damage while staying safe.</p>
+    <h2>4. Vision Control</h2>
+    <p>While your support is primarily responsible for vision, you should contribute too:
+    <ul>
+      <li>Always carry a control ward</li>
+      <li>Use your trinket to check bushes before face-checking</li>
+      <li>Pay attention to the minimap for potential ganks or roams</li>
+    </ul></p>
+    <h2>5. Objective Focus</h2>
+    <p>As an ADC, you excel at taking down objectives. Prioritize:
+    <ul>
+      <li>Dragon control</li>
+      <li>Pushing towers after winning teamfights</li>
+      <li>Securing Baron with your team when ahead</li>
+    </ul></p>
+    <h2>Conclusion</h2>
+    <p>Climbing as an ADC requires patience, practice, and a strategic mindset. Focus on improving these aspects of your gameplay, and you'll see your rank improve over time. Remember, every game is a learning opportunity. Stay positive, adapt to each match, and keep refining your skills!</p>`,
+    author: "user_id_here",
+    summary:
+      "A comprehensive guide for AD Carry players in League of Legends, focusing on key strategies to improve gameplay and climb the solo queue ladder.",
+    mainImage:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    ],
+    tags: ["League of Legends", "ADC", "Gaming Guide", "eSports"],
+    comments: [],
+  },
+  {
+    title: "CD Projekt Red's Redemption: The Cyberpunk 2077 Comeback Story",
+    content: `<h2>Introduction</h2>
+    <p>CD Projekt Red, the renowned Polish game developer behind The Witcher series, faced its biggest challenge with the release of Cyberpunk 2077. This article explores their journey from a rocky launch to an impressive comeback.</p>
+    <img src="https://images.unsplash.com/photo-1533972751724-9135a8410a4c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <h2>The Anticipation and Launch</h2>
+    <p>Cyberpunk 2077 was one of the most anticipated games of the decade. Promises of a vast, immersive open world combined with CD Projekt Red's reputation set expectations sky-high. However, the December 2020 launch was marred by:
+    <ul>
+      <li>Numerous bugs and glitches, especially on last-gen consoles</li>
+      <li>Performance issues across various platforms</li>
+      <li>Missing features that had been promised during marketing</li>
+    </ul>
+    The backlash was swift and severe, leading to refunds, the game's removal from the PlayStation Store, and a significant hit to the company's reputation and stock value.</p>
+    <h2>The Road to Redemption</h2>
+    <p>Instead of abandoning the project, CD Projekt Red committed to fixing and improving Cyberpunk 2077. Their redemption strategy included:
+    <ol>
+      <li>Frequent patches and updates to fix bugs and improve performance</li>
+      <li>Free DLC additions to enhance the game experience</li>
+      <li>Transparency in communication with players about upcoming changes</li>
+      <li>Refunds for dissatisfied customers</li>
+    </ol>
+    This dedication to improvement slowly began to turn the tide of public opinion.</p>
+    <h2>The Edgerunners Effect</h2>
+    <p>In September 2022, Netflix released "Cyberpunk: Edgerunners," an anime series set in the world of Cyberpunk 2077. The show was a massive success, reinvigorating interest in the game. CD Projekt Red capitalized on this by:
+    <ul>
+      <li>Releasing a major update coinciding with the show's premiere</li>
+      <li>Adding content inspired by the anime to the game</li>
+      <li>Offering discounts to attract new and returning players</li>
+    </ul>
+    This strategy led to a surge in player numbers and a renewed appreciation for the game's world and storytelling.</p>
+    <img src="https://images.unsplash.com/photo-1561411996-3794338f63cc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Neon-lit street, evocative of Cyberpunk 2077's aesthetic">
+    <h2>Lessons Learned and Future Prospects</h2>
+    <p>The Cyberpunk 2077 saga has taught CD Projekt Red valuable lessons:
+    <ul>
+      <li>The importance of realistic development timelines</li>
+      <li>The need for thorough testing across all platforms</li>
+      <li>The value of honest communication with the player base</li>
+    </ul>
+    As they continue to support Cyberpunk 2077 and work on future projects, including a sequel, these lessons will undoubtedly shape their approach to game development and marketing.</p>
+    <h2>Conclusion</h2>
+    <p>CD Projekt Red's journey with Cyberpunk 2077 is a testament to the power of perseverance and the importance of listening to player feedback. While the launch was undeniably problematic, their commitment to improving the game and rebuilding trust with their audience has resulted in a remarkable comeback story. As the gaming industry watches, CD Projekt Red's experience serves as both a cautionary tale and an inspiring example of how to turn failure into success.</p>`,
+    author: "user_id_here",
+    summary:
+      "An in-depth look at CD Projekt Red's journey with Cyberpunk 2077, from its troubled launch to its impressive comeback, highlighting the developer's commitment to improvement and the impact of the Cyberpunk: Edgerunners anime.",
+    mainImage:
+      "https://images.unsplash.com/photo-1533972751724-9135a8410a4c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    images: [
+      "https://images.unsplash.com/photo-1533972751724-9135a8410a4c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1561411996-3794338f63cc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
+    tags: [
+      "Cyberpunk 2077",
+      "CD Projekt Red",
+      "Game Development",
+      "Comeback Story",
+    ],
+    comments: [],
+  },
+];
