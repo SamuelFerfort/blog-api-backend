@@ -1,11 +1,11 @@
 import Comment from "../models/comment.js";
 
-
-
 export const getCommentsByPost = async (req, res) => {
   try {
-    const comments = await Comment.find({ post: req.params.postId }).populate({path: "Author", select: "name"}
-    );
+    const comments = await Comment.find({ post: req.params.postId }).populate({
+      path: "author",
+      select: "name",
+    });
     if (!comments) {
       return res
         .status(404)
@@ -16,26 +16,32 @@ export const getCommentsByPost = async (req, res) => {
     console.error("Error finding comments:", err.message);
     res.status(500).json({ message: "Server error. Please try again later." });
   }
-
 };
 
-
 export const createComment = async (req, res) => {
-
-  const comment = new Comment({ 
+  const comment = new Comment({
     post: req.body.postId,
     author: req.user.id,
-    content: req.body.content
-  })
-
+    content: req.body.content,
+  });
 
   try {
-    await comment.save()
-    res.status(201).json({message: "Comment Created", success: true, comment})
+    await comment.save();
+
+    const populatedComment = await Comment.findById(comment._id).populate({
+      path: "author",
+      select: "name",
+    });
+
+    res
+      .status(201)
+      .json({
+        message: "Comment Created",
+        success: true,
+        comment: populatedComment,
+      });
   } catch (err) {
-    console.error("Error saving comment", err)
-    res.status(400).json({message: err})
+    console.error("Error saving comment", err);
+    res.status(400).json({ message: err });
   }
-
-}
-
+};
