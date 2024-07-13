@@ -20,5 +20,22 @@ export const getCommentsByPost = async (req, res) => {
 };
 
 
+export const createComment = async (req, res) => {
 
+  const comment = new Comment({ 
+    post: req.body.postId,
+    author: req.user.id,
+    content: req.body.content
+  })
+
+
+  try {
+    await comment.save()
+    res.status(201).json({message: "Comment Created", success: true, comment})
+  } catch (err) {
+    console.error("Error saving comment", err)
+    res.status(400).json({message: err})
+  }
+
+}
 
