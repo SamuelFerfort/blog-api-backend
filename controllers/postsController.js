@@ -31,9 +31,6 @@ export const getPostById = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  if (req.user.role !== "author")
-    return res.status(401).json({ message: "Access Denied" });
-
   const { title, content, summary, mainImage, images, tags } = req.body;
 
   const post = new Post({
@@ -60,9 +57,6 @@ export const createPost = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
-  if (req.user.role !== "author")
-    return res.status(401).json({ message: "Access Denied" });
-
   try {
     await Post.findByIdAndDelete(req.params.id);
     res.json({ message: "Post deleted" });

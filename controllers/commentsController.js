@@ -45,9 +45,6 @@ export const createComment = async (req, res) => {
 };
 
 export const deleteComment = async (req, res) => {
-  if (req.user.role !== "author")
-    return res.status(401).json({ message: "Access Denied" });
-
   try {
     await Comment.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: "Comment deleted successfully" });
@@ -60,9 +57,6 @@ export const deleteComment = async (req, res) => {
 };
 
 export const updateComment = async (req, res) => {
-  if (req.user.role !== "author")
-    return res.status(401).json({ message: "Access Denied" });
-
   const { content } = req.body;
 
   if (!content)
