@@ -30,4 +30,47 @@ export const getPostById = async (req, res) => {
   }
 };
 
-export const createPost = async (req, res) => {};
+export const createPost = async (req, res) => {
+  if (req.user.role !== "author")
+    return res.status(401).json({ message: "Access Denied" });
+
+  const { title, content, summary, mainImage, images, tags } = req.body;
+
+  const post = new Post({
+    title,
+    content,
+    summary,
+    mainImage,
+    images,
+    tags,
+    author: req.user._id,
+    comments: [],
+  });
+
+  try {
+    await post.save();
+    res.json({ message: "Post created" });
+  } catch (err) {
+    console.error("Error creating post", err);
+    res.status(500).json({
+      message: "Error creating post",
+      error: process.env.NODE_ENV === "development" ? err.message : undefined,
+    });
+  }
+};
+
+export const deletePost = async (req, res) => {
+  if (req.user.role !== "author")
+    return res.status(401).json({ message: "Access Denied" });
+
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    res.json({ message: "Post deleted" });
+  } catch (err) {
+    console.error("Error deleting post", err);
+    res.status(500).json({
+      message: "Error deleting post",
+      error: process.env.NODE_ENV === "development" ? err.message : undefined,
+    });
+  }
+};

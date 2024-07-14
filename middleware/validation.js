@@ -23,3 +23,27 @@ export const loginValidation = (req, res, next) => {
   if (error) return res.status(400).json({ message: error.details[0].message });
   next();
 };
+
+
+
+export const createPostValidation = (req, res, next) => {
+  const schema = Joi.object({
+    title: Joi.string().required(),
+    content: JoiHTML.html().required(),
+    author: Joi.string().required(), 
+    createdAt: Joi.date().default(() => new Date(), 'current date'),
+    updatedAt: Joi.date().default(() => new Date(), 'current date'),
+    summary: Joi.string().required(),
+    mainImage: Joi.string().required(),
+    published: Joi.boolean().default(true),
+    images: Joi.array().items(Joi.string()),
+    tags: Joi.array().items(Joi.string()),
+    comments: Joi.array().items(Joi.string())
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+  next();
+};
