@@ -33,15 +33,59 @@ export const createComment = async (req, res) => {
       select: "name",
     });
 
-    res
-      .status(201)
-      .json({
-        message: "Comment Created",
-        success: true,
-        comment: populatedComment,
-      });
+    res.status(201).json({
+      message: "Comment Created",
+      success: true,
+      comment: populatedComment,
+    });
   } catch (err) {
     console.error("Error saving comment", err);
     res.status(400).json({ message: err });
+  }
+};
+
+export const deleteComment = async (req, res) => {
+  if (req.user.role !== "author")
+    return res.status(401).json({ message: "Access Denied" });
+
+  try {
+    await Comment.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: "Comment deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting comment", err);
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: err.message });
+  }
+};
+
+export const updateComment = async (req, res) => {
+  if (req.user.role !== "author")
+    return res.status(401).json({ message: "Access Denied" });
+
+  const { content } = req.body;
+
+  if (!content)
+    return res.status(400).json({ message: "Comment content is required" });
+
+  try {
+    const comment = await Comment.findById(req.params.id);
+
+    if (!comment) return res.status(404).json({ message: "Comment not found" });
+
+    comment.content = content;
+
+    await comment.save();
+    res.json({
+      message: "Comment updated successfully",
+      comment,
+      success: true,
+    });
+  } catch (err) {
+    console.error("Error updating comment", err);
+
+    res
+      .status(500)
+      .json({ message: "Error updating the comment", error: err.message });
   }
 };

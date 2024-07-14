@@ -9,4 +9,9 @@ const CommentSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+CommentSchema.pre('save', function(next) {
+  this.updatedAt = Date.now();
+  next();
+});
+
 export default mongoose.model("Comment", CommentSchema);
