@@ -2,7 +2,10 @@ import Post from "../models/post.js";
 
 export const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find({ published: true });
+    const posts = await Post.find({ published: true }).populate({
+      path: "author",
+      select: "name",
+    });
 
     if (!posts) return res.status(404).json({ message: "No posts found" });
 
