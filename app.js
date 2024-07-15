@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 import connectDB from "./config/database.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import commentRoutes from "./routes/comments.js";
 
@@ -25,7 +24,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRoutes);
-app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 
