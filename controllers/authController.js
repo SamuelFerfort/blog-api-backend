@@ -24,10 +24,11 @@ export const registerUser = async (req, res) => {
   }
 };
 
+
 export const loginUser = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).json({ message: "Email does not exist" });
-
+  
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).json({ message: "Wrong Password" });
 
@@ -40,3 +41,4 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {};
+
