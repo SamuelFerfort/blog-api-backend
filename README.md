@@ -8,7 +8,7 @@ This project is a full-stack blog application consisting of three main component
 2. A public-facing frontend for blog readers
 3. An admin frontend for blog authors
 
-The project is made to practice both frontend and backend technologies, showcasing the ability to create a complete web application from end to end.
+The project is made to practice both frontend and backend technologies, showcasing the ability to create a web application from end to end.
 
 ## Technologies Used
 
@@ -16,7 +16,7 @@ The project is made to practice both frontend and backend technologies, showcasi
 
 - Node.js
 - Express.js
-- MongoDB with Mongoose
+- PostgreSQL with Prisma
 - JSON Web Tokens (JWT) for authentication
 
 ### Frontend
@@ -38,7 +38,7 @@ The project is made to practice both frontend and backend technologies, showcasi
 ### Backend Development
 
 - Designing and implementing RESTful APIs
-- Working with MongoDB and Mongoose for data modeling and management
+- Working with Prisma for data modeling and management
 - Implementing JWT-based authentication for secure routes
 
 ### Frontend Development with React
