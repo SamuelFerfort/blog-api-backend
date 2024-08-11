@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import "dotenv/config";
-import User from "../models/user.js"
+import User from "../models/User.js";
 
 export default async function auth(req, res, next) {
   const authHeader = req.header("Authorization");
@@ -11,13 +11,14 @@ export default async function auth(req, res, next) {
 
   try {
     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-
-    const user = await User.findById(verified.id);
+    console.log(verified)
+    const user = await User.findById({ id: verified.id });
     if (!user) return res.status(401).json({ message: "User not found" });
 
     req.user = user;
     next();
   } catch (err) {
+    console.error("Error validating token:", err);
     res.status(400).json({ message: "Invalid Token" });
   }
 }

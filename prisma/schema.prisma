@@ -18,10 +18,11 @@ model User {
   id  String @id @default(uuid())
   email String @unique
   createdAt DateTime  @default(now())
-  username String
-  Post  Post[]
-  Comment Comment[]
+  name String
+  posts  Post[]
+  comments Comment[]
   role Role @default(user)
+  password String
 }
 
 model Post {
@@ -54,7 +55,7 @@ model Comment {
 
 model Tag {
   id String @id @default(uuid())
-  name String
+  name String @unique
   posts Post[]
 }
 

@@ -1,52 +1,48 @@
-import mongoose from "mongoose";
-import User from "./models/user.js";
-import Post from "./models/post.js";
 import { mockPosts } from "./mockPosts.js";
-import "dotenv/config";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 async function populatePosts() {
   try {
-    // Ensure database connection
-    await mongoose.connect(process.env.DEV_DB);
-
-    // Get all user IDs (assuming you have users in the database)
-    const users = await User.find({}, "_id");
+    const users = await prisma.user.findMany();
     if (users.length === 0) {
       throw new Error(
         "No users found in the database. Please add some users first."
       );
     }
 
-    const posts = [];
-
     for (const mockPost of mockPosts) {
       const randomUser = users[Math.floor(Math.random() * users.length)];
 
-      const post = new Post({
-        title: mockPost.title,
-        content: mockPost.content,
-        author: randomUser._id,
-        tags: mockPost.tags,
-        summary: mockPost.summary,
-        mainImage: mockPost.mainImage,
-        images: mockPost.images,
-        comments: [],
+      const post = await prisma.post.create({
+        data: {
+          title: mockPost.title,
+          content: mockPost.content,
+          authorId: randomUser.id,
+          summary: mockPost.summary,
+          mainImage: mockPost.mainImage,
+          images: mockPost.images,
+          tags: {
+            connectOrCreate: mockPost.tags.map((tag) => ({
+              where: { name: tag },
+              create: { name: tag },
+            })),
+          },
+        },
       });
 
-      posts.push(post);
+      console.log(`Created post: ${post.title}`);
     }
 
-    // Save all posts
-    await Post.insertMany(posts);
-
-    console.log(`Successfully added ${posts.length} mock posts to the database.`);
+    console.log(
+      `Successfully added ${mockPosts.length} mock posts to the database.`
+    );
   } catch (error) {
     console.error("Error populating posts:", error);
   } finally {
-    // Close the database connection
-    await mongoose.connection.close();
+    await prisma.$disconnect();
   }
 }
-
 
 populatePosts();

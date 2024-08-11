@@ -3,7 +3,6 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
-import connectDB from "./config/database.js";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import postRoutes from "./routes/posts.js";
@@ -14,7 +13,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-connectDB();
 
 app.use(cors());
 app.use(logger("dev"));

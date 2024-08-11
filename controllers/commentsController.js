@@ -1,16 +1,9 @@
-import Comment from "../models/comment.js";
+import Comment from "../models/Comment.js";
 
 export const getCommentsByPost = async (req, res) => {
   try {
-    const comments = await Comment.find({ post: req.params.postId }).populate({
-      path: "author",
-      select: "name",
-    });
-    if (!comments) {
-      return res
-        .status(404)
-        .json({ message: "No comments found for this post" });
-    }
+    const comments = await Comment.findByPostId(req.params.postId);
+ 
     res.status(200).json(comments);
   } catch (err) {
     console.error("Error finding comments:", err.message);
@@ -19,24 +12,17 @@ export const getCommentsByPost = async (req, res) => {
 };
 
 export const createComment = async (req, res) => {
-  const comment = new Comment({
-    post: req.body.postId,
-    author: req.user.id,
+  const commentData = {
+    postId: req.body.postId,
+    authorId: req.user.id,
     content: req.body.content,
-  });
-
+  };
   try {
-    await comment.save();
-
-    const populatedComment = await Comment.findById(comment._id).populate({
-      path: "author",
-      select: "name",
-    });
-
+    const comment = await Comment.create(commentData);
     res.status(201).json({
       message: "Comment Created",
       success: true,
-      comment: populatedComment,
+      comment,
     });
   } catch (err) {
     console.error("Error saving comment", err);
@@ -63,13 +49,9 @@ export const updateComment = async (req, res) => {
     return res.status(400).json({ message: "Comment content is required" });
 
   try {
-    const comment = await Comment.findById(req.params.id);
-
+    const comment = await Comment.findByIdAndUpdate(req.params.id, { content });
     if (!comment) return res.status(404).json({ message: "Comment not found" });
 
-    comment.content = content;
-
-    await comment.save();
     res.json({
       message: "Comment updated successfully",
       comment,

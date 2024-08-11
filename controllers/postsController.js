@@ -1,11 +1,8 @@
-import Post from "../models/post.js";
+import Post from "../models/Post.js";
 
 export const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find({ published: true }).populate({
-      path: "author",
-      select: "name",
-    });
+    const posts = await Post.findMany({ published: true })
 
     if (!posts) return res.status(404).json({ message: "No posts found" });
 
@@ -18,10 +15,7 @@ export const getAllPosts = async (req, res) => {
 
 export const getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate({
-      path: "author",
-      select: "name",
-    });
+    const post = await Post.findById(req.params.id)
     if (!post) return res.status(404).json({ message: "No posts found" });
     res.json(post);
   } catch (err) {
@@ -33,19 +27,18 @@ export const getPostById = async (req, res) => {
 export const createPost = async (req, res) => {
   const { title, content, summary, mainImage, images, tags } = req.body;
 
-  const post = new Post({
+  const post = {
     title,
     content,
     summary,
     mainImage,
     images,
     tags,
-    author: req.user._id,
-    comments: [],
-  });
+    authorId: req.user.id,
+  }
 
   try {
-    await post.save();
+    await post.create(post);
     res.json({ message: "Post created" });
   } catch (err) {
     console.error("Error creating post", err);
