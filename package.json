@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": " node --watch ./bin/www",
-    "postinstall": "npx prisma migrate deploy"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.18.0",
