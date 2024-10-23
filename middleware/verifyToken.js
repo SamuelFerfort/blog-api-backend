@@ -11,7 +11,6 @@ export default async function auth(req, res, next) {
 
   try {
     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(verified)
     const user = await User.findById({ id: verified.id });
     if (!user) return res.status(401).json({ message: "User not found" });
 
